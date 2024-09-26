@@ -1,6 +1,8 @@
-function displayChoice (choice) {
+// script.js
+
+function displayChoice(choice) {
   const firstParagraph = document.getElementById("display");
-firstParagraph.innerHTML = choice;
+  firstParagraph.innerHTML = choice;
 }
 
 function playGame() {
@@ -22,10 +24,17 @@ function playGame() {
              (playerChoice === 'Scissors' && randomChoice === 'Paper')) {
     declarationParagraph.innerHTML = "You win!";
     declarationParagraph.classList.add('win');
+    
+    // Trigger confetti blast when the player wins
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { x: 0.5, y: 0.5 }
+    });
   } else {
     declarationParagraph.innerHTML = "You lose! Try again.";
     declarationParagraph.classList.add('lose');
   }
-      declarationParagraph.scrollIntoView({ behavior: 'smooth', block: 'end' });
-
+  
+  declarationParagraph.scrollIntoView({ behavior: 'smooth', block: 'end' });
 }
